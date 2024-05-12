@@ -1,0 +1,28 @@
+<!-- weather.component.html -->
+<div class="table-container">
+  <div *ngIf="weatherData; else loading">
+    <table mat-table class="mat-elevation-z8">
+      <thead>
+      <tr>
+        <th>Data</th>
+        <th>Pogoda</th>
+        <th>Temp. Min</th>
+        <th>Temp. Max</th>
+        <th>Energia (kWh)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let day of weatherData.daily.weather_code; let i = index">
+        <td>{{  weatherData.daily.time[i] | date:'dd/MM/yyyy' }}</td>
+        <td><fa-icon [icon]="getWeatherIcon(day)"></fa-icon></td>
+        <td>{{ weatherData.daily.temperature_2m_min[i] }} °C</td>
+        <td>{{ weatherData.daily.temperature_2m_max[i] }} °C</td>
+        <td>{{ weatherData.daily.generatedEnergy[i] }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>

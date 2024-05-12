@@ -1,0 +1,21 @@
+mat-toolbar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.app-name {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+mat-icon {
+  color: #A5D6A7;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button {
+  color: white;
+}

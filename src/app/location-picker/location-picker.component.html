@@ -1,0 +1,26 @@
+<div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
+  </div>
+</div>
+
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #coordsForm="ngForm">
+    <input type="number" [(ngModel)]="latitude" name="latitude" placeholder="Szerokość"
+           required min="-90" max="90" #latitudeInput="ngModel">
+    <div *ngIf="latitudeInput.errors && (latitudeInput.dirty || latitudeInput.touched)" class="error">
+      <p *ngIf="latitudeInput.errors['required']">Szerokość jest wymagana.</p>
+      <p *ngIf="latitudeInput.errors['min'] || latitudeInput.errors['max']">Szerokość musi być w zakresie od -90 do 90.</p>
+    </div>
+
+    <input type="number" [(ngModel)]="longitude" name="longitude" placeholder="Długość"
+           required min="-180" max="180" #longitudeInput="ngModel">
+    <div *ngIf="longitudeInput.errors && (longitudeInput.dirty || longitudeInput.touched)" class="error">
+      <p *ngIf="longitudeInput.errors['required']">Długość jest wymagana.</p>
+      <p *ngIf="longitudeInput.errors['min'] || longitudeInput.errors['max']">Długość musi być w zakresie od -180 do 180.</p>
+    </div>
+
+    <button type="submit" [disabled]="!coordsForm.valid">Aktualizuj lokalizacje</button>
+  </form>
+</div>
